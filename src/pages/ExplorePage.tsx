@@ -1,6 +1,5 @@
 import { useSearchParams, Link } from 'react-router-dom'
 import { Avatar } from '@/components/ui/Avatar'
-import { LoadingSpinner } from '@/components/common/LoadingSpinner'
 import { EmptyState } from '@/components/common/EmptyState'
 import { useSearchProfiles } from '@/hooks/useProfile'
 
@@ -18,8 +17,6 @@ export function ExplorePage() {
           <p>Busque por usuarios para comecar</p>
         </div>
       )}
-
-      {loading && <LoadingSpinner className="h-6 w-6 mx-auto" />}
 
       {!loading && searchQuery && results.length === 0 && (
         <EmptyState title="Nenhum resultado" description={`Nenhum usuario encontrado para "${searchQuery}"`} />

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useUserPosts } from '@/hooks/usePosts'
 import { FeedPost } from '@/components/feed/FeedPost'
-import { PostSkeleton } from '@/components/ui/Skeleton'
+import { LoadingSpinner } from '@/components/common/LoadingSpinner'
 import { EmptyState } from '@/components/common/EmptyState'
 
 interface ProfilePostsProps {
@@ -30,7 +30,11 @@ export function ProfilePosts({ userId }: ProfilePostsProps) {
 
   return (
     <div className="space-y-4">
-      {isLoading && <div className="space-y-4"><PostSkeleton /><PostSkeleton /></div>}
+      {isLoading && (
+        <div className="flex justify-center py-8">
+          <LoadingSpinner className="h-8 w-8" />
+        </div>
+      )}
 
       {!isLoading && posts.length === 0 && (
         <EmptyState title="Nenhum post" description="Nenhum post publicado ainda" />
@@ -40,7 +44,11 @@ export function ProfilePosts({ userId }: ProfilePostsProps) {
         <FeedPost key={post.id} post={post} />
       ))}
 
-      {isFetchingNextPage && <PostSkeleton />}
+      {isFetchingNextPage && (
+        <div className="flex justify-center py-4">
+          <LoadingSpinner className="h-6 w-6" />
+        </div>
+      )}
       <div ref={observerRef} className="h-4" />
     </div>
   )

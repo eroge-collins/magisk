@@ -47,11 +47,17 @@ const config: Config = {
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         shimmer: 'shimmer 2s linear infinite',
+        'loading-bar': 'loading-bar 1.3s ease-in-out infinite',
       },
       keyframes: {
         shimmer: {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(100%)' },
+        },
+        'loading-bar': {
+          '0%': { width: '0%', marginLeft: '0%' },
+          '50%': { width: '60%', marginLeft: '20%' },
+          '100%': { width: '0%', marginLeft: '100%' },
         },
       },
     },

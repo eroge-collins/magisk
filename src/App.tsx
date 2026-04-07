@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MainLayout } from '@/components/layout/MainLayout'
 import { ErrorBoundary } from '@/components/common/ErrorBoundary'
+import { PageTransition } from '@/components/common/PageTransition'
 import { ToastContainer } from '@/components/ui/Toast'
 import { FeedPage } from '@/pages/FeedPage'
 import { ProfilePage } from '@/pages/ProfilePage'
@@ -30,18 +31,20 @@ export default function App() {
       <ErrorBoundary>
         <BrowserRouter>
           <MainLayout>
-            <Routes>
-              <Route path="/" element={<FeedPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/:username" element={<ProfilePage />} />
-              <Route path="/explore" element={<ExplorePage />} />
-              <Route path="/new" element={<NewPostPage />} />
-              <Route path="/post/:postId" element={<PostPage />} />
-              <Route path="/notifications" element={<NotificationsPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
+            <PageTransition>
+              <Routes>
+                <Route path="/" element={<FeedPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/:username" element={<ProfilePage />} />
+                <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/new" element={<NewPostPage />} />
+                <Route path="/post/:postId" element={<PostPage />} />
+                <Route path="/notifications" element={<NotificationsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </PageTransition>
           </MainLayout>
           <ToastContainer />
         </BrowserRouter>

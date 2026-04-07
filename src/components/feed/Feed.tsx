@@ -3,7 +3,7 @@ import { useFeed } from '@/hooks/usePosts'
 import { useAuth } from '@/hooks/useAuth'
 import { CreatePost } from './CreatePost'
 import { FeedPost } from './FeedPost'
-import { PostSkeleton } from '@/components/ui/Skeleton'
+import { LoadingSpinner } from '@/components/common/LoadingSpinner'
 import { EmptyState } from '@/components/common/EmptyState'
 
 export function Feed() {
@@ -33,10 +33,8 @@ export function Feed() {
       {userId && <CreatePost />}
 
       {isLoading && (
-        <div className="space-y-4">
-          <PostSkeleton />
-          <PostSkeleton />
-          <PostSkeleton />
+        <div className="flex justify-center py-8">
+          <LoadingSpinner className="h-8 w-8" />
         </div>
       )}
 
@@ -57,7 +55,11 @@ export function Feed() {
         <FeedPost key={post.id} post={post} />
       ))}
 
-      {isFetchingNextPage && <PostSkeleton />}
+      {isFetchingNextPage && (
+        <div className="flex justify-center py-4">
+          <LoadingSpinner className="h-6 w-6" />
+        </div>
+      )}
 
       <div ref={observerRef} className="h-4" />
     </div>

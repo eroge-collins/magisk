@@ -1,7 +1,6 @@
 import { Heart, MessageCircle, UserPlus } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Avatar } from '@/components/ui/Avatar'
-import { LoadingSpinner } from '@/components/common/LoadingSpinner'
 import { EmptyState } from '@/components/common/EmptyState'
 import { useNotifications, useMarkNotificationsRead } from '@/hooks/useInteractions'
 import { formatRelativeTime } from '@/lib/utils'
@@ -45,7 +44,7 @@ function NotificationsContent() {
     <div className="max-w-feed mx-auto px-4 py-4">
       <h1 className="text-xl font-bold text-void-50 mb-4">Notificacoes</h1>
 
-      {isLoading && <LoadingSpinner className="h-6 w-6 mx-auto" />}
+      {isLoading && null}
 
       {!isLoading && notifications.length === 0 && (
         <EmptyState title="Sem notificacoes" description="Nenhuma notificacao ainda" />
