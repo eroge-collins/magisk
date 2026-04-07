@@ -1,0 +1,17 @@
+--- MAGISK iOS APP FILES ---
+
+This directory is reserved for the future iOS application.
+
+Recommended stack:
+- React Native / Expo (shared component architecture with web)
+- Or Capacitor (wrap web app for native deployment)
+- Or SwiftUI (separate native codebase, shared API layer)
+
+The web app is built with responsive design in mind,
+using mobile-first breakpoints that map well to native views.
+
+Key considerations:
+- Share the same Supabase backend
+- Reuse API service layer from src/services/
+- Reuse validation schemas from src/validations/
+- Reuse TypeScript types from src/types/

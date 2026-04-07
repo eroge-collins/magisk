@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.env.local
+*.local
+.DS_Store
+*.log
+test-results
+test-*.png
+playwright-report
